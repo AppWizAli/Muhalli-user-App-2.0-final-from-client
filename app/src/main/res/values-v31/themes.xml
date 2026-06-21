@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.MuhalliNewUserApp20.Splash" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@color/bg_light</item>
+        <item name="android:windowSplashScreenBackground">@color/bg_light</item>
+        <item name="android:statusBarColor">@color/bg_light</item>
+        <item name="android:navigationBarColor">@color/bg_light</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

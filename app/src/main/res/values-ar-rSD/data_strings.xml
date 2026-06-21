@@ -1,0 +1,83 @@
+<resources>
+    <string name="data_store_name">متجري للتجزئة</string>
+    <string name="data_buyer_name">سناء أحمد</string>
+    <string name="data_buyer_city">دبي، الإمارات</string>
+    <string name="data_buyer_member_since">انضم في مارس 2024</string>
+
+    <string name="data_category_snacks">وجبات خفيفة</string>
+    <string name="data_category_chips">شيبس</string>
+    <string name="data_category_mineral_water">مياه معدنية</string>
+    <string name="data_category_groceries">بقالة</string>
+    <string name="data_category_drinks">مشروبات</string>
+    <string name="data_category_fresh_fruits">فواكه طازجة</string>
+    <string name="data_category_meat">لحوم</string>
+    <string name="data_category_coffee_tea">قهوة وشاي</string>
+
+    <string name="data_supplier_al_hamd_wholes">Al-Hamd Wholes</string>
+    <string name="data_supplier_al_sadiqa_company">Al-Sadiqa Company</string>
+    <string name="data_supplier_al_far_imports">Al-Far Imports</string>
+    <string name="data_supplier_premium_foods">Premium Foods LLC</string>
+    <string name="data_supplier_global_trade">Global Trade Supplies</string>
+    <string name="data_supplier_pure_spring">Pure Spring Distributors</string>
+    <string name="data_supplier_prime_cuts">Prime Cuts Market</string>
+    <string name="data_supplier_desert_brew">Desert Brew Traders</string>
+
+    <string name="data_location_jebel_ali">جبل علي</string>
+    <string name="data_location_sharjah">الشارقة</string>
+    <string name="data_location_dubai">دبي</string>
+    <string name="data_location_abu_dhabi">أبوظبي</string>
+    <string name="data_location_ajman">عجمان</string>
+    <string name="data_location_lahore">لاهور</string>
+    <string name="data_location_karachi">كراتشي</string>
+
+    <string name="data_date_march_14_2026">14 مارس 2026</string>
+    <string name="data_date_march_12_2026">12 مارس 2026</string>
+    <string name="data_date_march_10_2026">10 مارس 2026</string>
+    <string name="data_date_march_8_2026">8 مارس 2026</string>
+    <string name="data_date_march_5_2026">5 مارس 2026</string>
+    <string name="data_date_march_17_2026">17 مارس 2026</string>
+
+    <string name="data_chat_thread_message_1">يمكن توصيل طلب الوجبات الخفيفة غداً صباحاً.</string>
+    <string name="data_chat_thread_message_2">المخزون الجديد من القهوة والشاي متوفر الآن.</string>
+    <string name="data_chat_thread_message_3">نقدر نرتب شحن في نفس اليوم لطلبك القادم.</string>
+    <string name="data_chat_thread_message_4">كراتين المياه المعدنية جاهزة ومعبأة.</string>
+    <string name="data_last_seen_2_min_ago">قبل دقيقتين</string>
+    <string name="data_last_seen_15_min_ago">قبل 15 دقيقة</string>
+    <string name="data_last_seen_1_hr_ago">قبل ساعة</string>
+    <string name="data_last_seen_yesterday">أمس</string>
+
+    <string name="data_chat_alhamd_text_1">مرحباً! جهزنا طلب الوجبات الخفيفة ويمكننا الشحن غداً صباحاً.</string>
+    <string name="data_chat_alhamd_media_body">أشارك صورة ترتيب الرف حتى تقدروا تطابقوا ملصق الكرتون.</string>
+    <string name="data_chat_alhamd_media_title">تحديث رف المتجر</string>
+    <string name="data_chat_alhamd_media_subtitle">صورة PNG - 2.4 MB</string>
+    <string name="data_chat_alhamd_voice_body">رجاءً راجع وقت الشحن في هذه الرسالة الصوتية.</string>
+    <string name="data_chat_alhamd_voice_status">رسالة صوتية من المورد</string>
+    <string name="data_chat_alhamd_invoice_body">نسخة الفاتورة مرفقة للموافقة.</string>
+    <string name="data_chat_alhamd_invoice_label">فاتورة</string>
+    <string name="data_chat_alhamd_invoice_title">نسخة فاتورة مارس</string>
+    <string name="data_chat_alhamd_invoice_subtitle">مستند PDF - صفحة واحدة</string>
+    <string name="data_chat_alhamd_buyer_reply">تمام. رجاءً خلو الأسعار نفسها والتوصيل قبل الظهر.</string>
+
+    <string name="data_chat_premium_text_1">مخزون القهوة الطازج متوفر الآن. هل تريدنا نحجز 20 صندوق؟</string>
+    <string name="data_chat_premium_voice_body">أرسل رسالة صوتية سريعة بالكمية المعدلة.</string>
+    <string name="data_chat_premium_media_body">هذه أحدث صورة للمنتج من دفعة اليوم.</string>
+    <string name="data_chat_premium_media_label">صورة منتج</string>
+    <string name="data_chat_premium_media_title">معاينة كراتين القهوة</string>
+    <string name="data_chat_premium_media_subtitle">صورة JPG - 1.7 MB</string>
+
+    <string name="data_chat_default_text_1">أهلاً بعودتك. نحن جاهزون نشارك الأسعار والصور وتحديثات التوصيل لطلبك القادم.</string>
+    <string name="data_chat_default_media_body">رجاءً راجع مرجع المنتج قبل ما تؤكد تشكيلة الكراتين.</string>
+    <string name="data_chat_default_media_label">مرجع</string>
+    <string name="data_chat_default_media_title">مرفق من المشتري</string>
+    <string name="data_chat_default_media_subtitle">ملف صورة - 2.0 MB</string>
+    <string name="data_chat_default_voice_body">سجلت أيضاً رسالة صوتية فيها وقت الشحن.</string>
+    <string name="data_chat_default_voice_status">رسالة صوتية من المورد</string>
+
+    <string name="data_product_premium_potato_chips">شيبس بطاطس فاخر</string>
+    <string name="data_product_mixed_nuts_pack">عبوة مكسرات مشكلة</string>
+    <string name="data_product_chocolate_cookies">كوكيز بالشوكولاتة</string>
+    <string name="data_product_energy_drinks_24pk">مشروبات طاقة 24 عبوة</string>
+    <string name="data_product_mineral_water_500ml">مياه معدنية 500 مل</string>
+    <string name="data_product_orange_juice_1l">عصير برتقال 1 لتر</string>
+    <string name="data_unit_carton">كرتون</string>
+</resources>

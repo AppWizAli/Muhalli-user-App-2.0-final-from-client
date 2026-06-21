@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#202938</color>
+    <color name="bg_light">#0E1117</color>
+    <color name="text_grey">#C8D1DE</color>
+    <color name="text_dark">#FFFFFF</color>
+    <color name="status_delivered_bg">#182C24</color>
+    <color name="status_delivered_text">#89D88F</color>
+    <color name="status_transit_bg">#18233A</color>
+    <color name="status_transit_text">#79A8FF</color>
+    <color name="status_processing_bg">#2A2213</color>
+    <color name="status_processing_text">#FFC77D</color>
+    <color name="status_cancelled_bg">#2B171C</color>
+    <color name="status_cancelled_text">#FF9797</color>
+    <color name="divider">#323D4E</color>
+</resources>

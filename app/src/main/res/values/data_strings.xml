@@ -1,0 +1,83 @@
+<resources>
+    <string name="data_store_name">My Retail Store</string>
+    <string name="data_buyer_name">Sana Ahmed</string>
+    <string name="data_buyer_city">Dubai, UAE</string>
+    <string name="data_buyer_member_since">Joined March 2024</string>
+
+    <string name="data_category_snacks">Snacks</string>
+    <string name="data_category_chips">Chips</string>
+    <string name="data_category_mineral_water">Mineral Water</string>
+    <string name="data_category_groceries">Groceries</string>
+    <string name="data_category_drinks">Drinks</string>
+    <string name="data_category_fresh_fruits">Fresh Fruits</string>
+    <string name="data_category_meat">Meat</string>
+    <string name="data_category_coffee_tea">Coffee &amp; Tea</string>
+
+    <string name="data_supplier_al_hamd_wholes">Al-Hamd Wholes</string>
+    <string name="data_supplier_al_sadiqa_company">Al-Sadiqa Company</string>
+    <string name="data_supplier_al_far_imports">Al-Far Imports</string>
+    <string name="data_supplier_premium_foods">Premium Foods LLC</string>
+    <string name="data_supplier_global_trade">Global Trade Supplies</string>
+    <string name="data_supplier_pure_spring">Pure Spring Distributors</string>
+    <string name="data_supplier_prime_cuts">Prime Cuts Market</string>
+    <string name="data_supplier_desert_brew">Desert Brew Traders</string>
+
+    <string name="data_location_jebel_ali">Jebel Ali</string>
+    <string name="data_location_sharjah">Sharjah</string>
+    <string name="data_location_dubai">Dubai</string>
+    <string name="data_location_abu_dhabi">Abu Dhabi</string>
+    <string name="data_location_ajman">Ajman</string>
+    <string name="data_location_lahore">Lahore</string>
+    <string name="data_location_karachi">Karachi</string>
+
+    <string name="data_date_march_14_2026">March 14, 2026</string>
+    <string name="data_date_march_12_2026">March 12, 2026</string>
+    <string name="data_date_march_10_2026">March 10, 2026</string>
+    <string name="data_date_march_8_2026">March 8, 2026</string>
+    <string name="data_date_march_5_2026">March 5, 2026</string>
+    <string name="data_date_march_17_2026">March 17, 2026</string>
+
+    <string name="data_chat_thread_message_1">Your snacks order can be delivered tomorrow morning.</string>
+    <string name="data_chat_thread_message_2">Fresh stock for coffee and tea is now available.</string>
+    <string name="data_chat_thread_message_3">We can arrange same-day dispatch for your next order.</string>
+    <string name="data_chat_thread_message_4">Mineral water cartons are packed and ready.</string>
+    <string name="data_last_seen_2_min_ago">2 min ago</string>
+    <string name="data_last_seen_15_min_ago">15 min ago</string>
+    <string name="data_last_seen_1_hr_ago">1 hr ago</string>
+    <string name="data_last_seen_yesterday">Yesterday</string>
+
+    <string name="data_chat_alhamd_text_1">Hello! We packed your snacks order and can dispatch tomorrow morning.</string>
+    <string name="data_chat_alhamd_media_body">Sharing the shelf display image so you can match the carton labeling.</string>
+    <string name="data_chat_alhamd_media_title">Store shelf update</string>
+    <string name="data_chat_alhamd_media_subtitle">PNG image - 2.4 MB</string>
+    <string name="data_chat_alhamd_voice_body">Please review the dispatch timing in this voice note.</string>
+    <string name="data_chat_alhamd_voice_status">Voice message from supplier</string>
+    <string name="data_chat_alhamd_invoice_body">Invoice copy is attached for approval.</string>
+    <string name="data_chat_alhamd_invoice_label">Invoice</string>
+    <string name="data_chat_alhamd_invoice_title">March invoice copy</string>
+    <string name="data_chat_alhamd_invoice_subtitle">PDF document - 1 page</string>
+    <string name="data_chat_alhamd_buyer_reply">Looks good. Please keep the same rates and deliver before noon.</string>
+
+    <string name="data_chat_premium_text_1">Fresh coffee stock is available now. Do you want us to reserve 20 boxes?</string>
+    <string name="data_chat_premium_voice_body">Sending a quick voice note with the revised quantity.</string>
+    <string name="data_chat_premium_media_body">Here is the latest product shot from today\'s batch.</string>
+    <string name="data_chat_premium_media_label">Product Image</string>
+    <string name="data_chat_premium_media_title">Coffee cartons preview</string>
+    <string name="data_chat_premium_media_subtitle">JPG image - 1.7 MB</string>
+
+    <string name="data_chat_default_text_1">Welcome back. We are ready to share pricing, photos, and delivery updates for your next order.</string>
+    <string name="data_chat_default_media_body">Please review this product reference before you confirm the carton mix.</string>
+    <string name="data_chat_default_media_label">Reference</string>
+    <string name="data_chat_default_media_title">Buyer attachment</string>
+    <string name="data_chat_default_media_subtitle">Image file - 2.0 MB</string>
+    <string name="data_chat_default_voice_body">I also recorded a voice note with dispatch timing.</string>
+    <string name="data_chat_default_voice_status">Supplier voice note</string>
+
+    <string name="data_product_premium_potato_chips">Premium Potato Chips</string>
+    <string name="data_product_mixed_nuts_pack">Mixed Nuts Pack</string>
+    <string name="data_product_chocolate_cookies">Chocolate Cookies</string>
+    <string name="data_product_energy_drinks_24pk">Energy Drinks 24pk</string>
+    <string name="data_product_mineral_water_500ml">Mineral Water 500ml</string>
+    <string name="data_product_orange_juice_1l">Orange Juice 1L</string>
+    <string name="data_unit_carton">carton</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="supplier_surface">#F7F9FF</color>
+    <color name="supplier_card_border">#DDE6F6</color>
+    <color name="supplier_text_secondary">#687A9B</color>
+    <color name="supplier_text_primary">#17305C</color>
+    <color name="supplier_header_start">#1D5CFF</color>
+    <color name="supplier_header_end">#2F72FF</color>
+    <color name="supplier_orange">#FFB354</color>
+    <color name="supplier_yellow">#F3C95D</color>
+    <color name="supplier_pink">#FF8AA7</color>
+    <color name="supplier_blue">#7EA7FF</color>
+    <color name="supplier_light_blue">#7FD3FF</color>
+    <color name="supplier_soft_blue">#A5B8FF</color>
+    <color name="supplier_amber">#D9B26B</color>
+    <color name="supplier_ice">#85DAF8</color>
+    <color name="supplier_teal">#75D0C7</color>
+    <color name="supplier_blush">#F7B0C3</color>
+    <color name="supplier_red">#F26B6B</color>
+    <color name="supplier_success_bg">#E7F8EE</color>
+    <color name="supplier_success_text">#36A36A</color>
+    <color name="supplier_warning_bg">#FFF4E3</color>
+    <color name="supplier_warning_text">#E89B2F</color>
+    <color name="supplier_error_bg">#FDECEC</color>
+    <color name="supplier_error_text">#EA5757</color>
+    <color name="supplier_confirmed_bg">#E8F1FF</color>
+    <color name="supplier_confirmed_text">#2A66FF</color>
+    <color name="supplier_shipped_bg">#F0E9FF</color>
+    <color name="supplier_shipped_text">#8B5CF6</color>
+    <color name="supplier_neutral_bg">#EDF2FF</color>
+    <color name="supplier_icon_bg">#EEF3FF</color>
+</resources>

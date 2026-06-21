@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/supplier_my_products"
+            android:textColor="@color/text_dark"
+            android:textSize="28sp"
+                android:fontFamily="@font/lama_sans_medium"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etSearchProducts"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_edittext"
+            android:drawableStart="@drawable/ic_search_24"
+            android:drawablePadding="10dp"
+            android:hint="@string/supplier_search_products"
+            android:paddingHorizontal="14dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBulkUpload"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/supplier_bulk_upload"
+            android:textAllCaps="false"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_upload_24" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBulkCatalogUpload"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/supplier_bulk_catalog_upload"
+            android:textAllCaps="false"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_upload_24" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_supplier_pill_selected"
+                    android:gravity="center"
+                    android:minWidth="54dp"
+                    android:paddingHorizontal="14dp"
+                    android:text="@string/supplier_all"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipActive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_supplier_pill_default"
+                    android:gravity="center"
+                    android:minWidth="62dp"
+                    android:paddingHorizontal="14dp"
+                    android:text="@string/supplier_active"
+                    android:textColor="@color/supplier_text_secondary" />
+
+                <TextView
+                    android:id="@+id/chipInactive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_supplier_pill_default"
+                    android:gravity="center"
+                    android:minWidth="68dp"
+                    android:paddingHorizontal="14dp"
+                    android:text="@string/supplier_inactive"
+                    android:textColor="@color/supplier_text_secondary" />
+
+                <TextView
+                    android:id="@+id/chipLowStock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_supplier_pill_default"
+                    android:gravity="center"
+                    android:minWidth="78dp"
+                    android:paddingHorizontal="14dp"
+                    android:text="@string/supplier_low_stock"
+                    android:textColor="@color/supplier_text_secondary" />
+
+                <TextView
+                    android:id="@+id/chipOffers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_supplier_pill_default"
+                    android:gravity="center"
+                    android:minWidth="68dp"
+                    android:paddingHorizontal="14dp"
+                    android:text="@string/offers"
+                    android:textColor="@color/supplier_text_secondary" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProducts"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="14dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:fadeScrollbars="false"
+            android:paddingBottom="96dp"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical" />
+
+        <LinearLayout
+            android:id="@+id/layoutProductsSkeleton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="14dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <include layout="@layout/item_inventory_skeleton" />
+            <include layout="@layout/item_inventory_skeleton" />
+            <include layout="@layout/item_inventory_skeleton" />
+            <include layout="@layout/item_inventory_skeleton" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressProductsPage"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/fabAddProduct"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_supplier_fab"
+        android:padding="16dp"
+        android:src="@drawable/ic_add_24"
+        app:tint="@android:color/white" />
+</FrameLayout>
+

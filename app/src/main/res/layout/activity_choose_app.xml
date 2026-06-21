@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/bg_icon_box"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mhally_logo" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="@string/choose_experience"
+            android:textColor="@color/text_dark"
+            android:textSize="28sp"
+                android:fontFamily="@font/lama_sans_medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/choose_experience_description"
+            android:textColor="@color/text_grey"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/cardBuyer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_supplier_card"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buyer_app"
+                android:textColor="@color/text_dark"
+                android:textSize="18sp"
+                android:fontFamily="@font/lama_sans_medium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/buyer_app_description"
+                android:textColor="@color/text_grey"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenBuyer"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/open_buyer_app"
+                android:textAllCaps="false"
+                app:cornerRadius="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardSupplier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_supplier_card"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/supplier_app"
+                android:textColor="@color/text_dark"
+                android:textSize="18sp"
+                android:fontFamily="@font/lama_sans_medium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/supplier_app_description"
+                android:textColor="@color/text_grey"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenSupplier"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/open_supplier_app"
+                android:textAllCaps="false"
+                app:cornerRadius="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

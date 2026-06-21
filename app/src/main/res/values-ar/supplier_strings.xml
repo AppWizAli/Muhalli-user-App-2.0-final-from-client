@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="supplier_voice_message">رسالة صوتية</string>
+    <string name="supplier_voice_playing">جاري تشغيل الرسالة الصوتية</string>
+    <string name="supplier_voice_recording">جاري تسجيل رسالة صوتية</string>
+    <string name="supplier_voice_ready">الرسالة الصوتية جاهزة</string>
+    <string name="supplier_voice_tap_to_play">اضغط للتشغيل</string>
+    <string name="supplier_voice_cancel">إلغاء</string>
+    <string name="supplier_voice_send">إرسال</string>
+    <string name="supplier_voice_stop">إيقاف</string>
+    <string name="supplier_voice_permission_required">يلزم إذن الميكروفون لتسجيل الرسائل الصوتية.</string>
+    <string name="supplier_voice_duration_format">رسالة صوتية %1$s</string>
+    <string name="supplier_buyer_phone">رقم المشتري</string>
+    <string name="supplier_buyer_address_map">عنوان المشتري على الخريطة</string>
+</resources>

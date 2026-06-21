@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FB"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_arrow_back_24"
+            app:tint="@color/text_dark" />
+
+        <ImageView
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/mhally_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/create_account"
+            android:textColor="#1A1C1E"
+            android:textSize="28sp"
+                android:fontFamily="@font/lama_sans_medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/buyer_register_subtitle"
+            android:textColor="#6C7278"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/buyer_name"
+            android:textColor="#1A1C1E"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etBuyerName"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_edittext"
+            android:drawableStart="@drawable/ic_person_24"
+            android:drawablePadding="12dp"
+            android:hint="@string/buyer_enter_name"
+            android:paddingHorizontal="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/buyer_phone_number"
+            android:textColor="#1A1C1E"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_edittext"
+            android:drawableStart="@drawable/ic_call_24"
+            android:drawablePadding="12dp"
+            android:hint="@string/phone_number_format_hint"
+            android:inputType="phone"
+            android:paddingHorizontal="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/city"
+            android:textColor="#1A1C1E"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/etCity"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
+            android:drawableStart="@drawable/ic_location_on_24"
+            android:drawablePadding="12dp"
+            android:hint="@string/buyer_enter_city"
+            android:singleLine="true"
+            android:paddingHorizontal="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/location"
+            android:textColor="#1A1C1E"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etLocation"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_edittext"
+            android:focusable="false"
+            android:gravity="top|start"
+            android:hint="@string/location_map_hint"
+            android:inputType="none"
+            android:padding="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSelectCityFromMap"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/choose_location_on_map"
+            android:textAllCaps="false"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_location_on_24" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCreateAccount"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/primary"
+            android:text="@string/buyer_request_otp"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:cornerRadius="12dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/already_have_an_account"
+                android:textColor="#6C7278" />
+
+            <TextView
+                android:id="@+id/tvSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_in"
+                android:textColor="@color/primary"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

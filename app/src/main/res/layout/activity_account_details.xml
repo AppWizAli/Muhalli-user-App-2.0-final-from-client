@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingHorizontal="8dp"
+        app:navigationIcon="@drawable/ic_arrow_back_24"
+        app:title="@string/account_details"
+        app:titleTextColor="@color/text_dark" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <EditText
+                        android:id="@+id/etBuyerName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_edittext"
+                        android:hint="@string/buyer_name"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="14dp" />
+
+                    <EditText
+                        android:id="@+id/etPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_edittext"
+                        android:hint="@string/phone_number"
+                        android:inputType="phone"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="14dp" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_edittext"
+                        android:completionThreshold="1"
+                        android:hint="@string/city"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="14dp" />
+
+                    <EditText
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_edittext"
+                        android:focusable="false"
+                        android:gravity="top|start"
+                        android:hint="@string/location_map_hint"
+                        android:inputType="none"
+                        android:padding="16dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnChooseLocation"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/choose_location_on_map"
+                        android:textAllCaps="false"
+                        app:cornerRadius="14dp"
+                        app:icon="@drawable/ic_location_on_24" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/save_changes"
+                        android:textAllCaps="false"
+                        app:cornerRadius="14dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

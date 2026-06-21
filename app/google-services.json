@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "693979133807",
+    "project_id": "mhally-80a33",
+    "storage_bucket": "mhally-80a33.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693979133807:android:0abffee00a029097f19a9a",
+        "android_client_info": {
+          "package_name": "com.hiskytechs.muhallinewuserapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693979133807-5m48lc0857f3panlt81vjsq1hq0uu7no.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPxW_rI6frRoDDBtiPsE95Z4bqEeElm7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693979133807-5m48lc0857f3panlt81vjsq1hq0uu7no.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

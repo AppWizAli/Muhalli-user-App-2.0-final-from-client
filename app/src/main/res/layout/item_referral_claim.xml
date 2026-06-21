@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingVertical="10dp">
+
+    <LinearLayout
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:background="@drawable/bg_status_delivered"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_person_24"
+            android:tint="@color/status_delivered_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvClaimStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/referral_claim_store_example"
+            android:textColor="@color/text_dark"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvClaimMeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/referral_claim_meta_example"
+            android:textColor="@color/text_grey"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvClaimReward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/referral_reward_example"
+        android:textColor="@color/primary"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+</LinearLayout>

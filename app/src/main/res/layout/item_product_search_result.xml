@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/divider">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/ivProduct"
+            android:layout_width="74dp"
+            android:layout_height="74dp"
+            android:background="@drawable/bg_edittext"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_image_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/premium_potato_chips"
+            android:textColor="@color/text_dark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/btnAddToCart"
+            app:layout_constraintStart_toEndOf="@id/ivProduct"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSupplierName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/al_hamd_wholesale"
+            android:textColor="@color/text_grey"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="@id/tvProductName"
+            app:layout_constraintStart_toStartOf="@id/tvProductName"
+            app:layout_constraintTop_toBottomOf="@id/tvProductName" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_status_transit"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="@string/general_category"
+            android:textColor="@color/primary"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvProductName"
+            app:layout_constraintTop_toBottomOf="@id/tvSupplierName" />
+
+        <TextView
+            android:id="@+id/tvStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/search_stock_example"
+            android:textColor="@color/status_delivered_text"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tvCategory"
+            app:layout_constraintStart_toEndOf="@id/tvCategory"
+            app:layout_constraintTop_toTopOf="@id/tvCategory" />
+
+        <TextView
+            android:id="@+id/tvOriginalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/value_45_99"
+            android:textColor="@color/text_grey"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tvProductName"
+            app:layout_constraintTop_toBottomOf="@id/tvCategory" />
+
+        <TextView
+            android:id="@+id/tvOfferPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/value_45_99"
+            android:textColor="@color/primary"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tvOriginalPrice"
+            app:layout_constraintStart_toEndOf="@id/tvOriginalPrice"
+            app:layout_constraintTop_toTopOf="@id/tvOriginalPrice" />
+
+        <TextView
+            android:id="@+id/tvOfferLimit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/offer_limit_example"
+            android:textColor="@color/text_grey"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvProductName"
+            app:layout_constraintTop_toBottomOf="@id/tvOfferPrice" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddToCart"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="0dp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_add_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="18dp"
+            app:iconTint="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

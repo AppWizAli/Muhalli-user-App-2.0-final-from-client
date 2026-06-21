@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_arrow_back_24"
+            app:tint="@color/text_dark" />
+
+        <TextView
+            android:id="@+id/tvAvatar"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/bg_supplier_avatar"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvRetailerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_dark"
+                android:textSize="19sp"
+                android:fontFamily="@font/lama_sans_medium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/supplier_active_now"
+                android:textColor="@color/supplier_text_secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fadeScrollbars="false"
+        android:padding="16dp"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:id="@+id/layoutVoiceRecorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="6dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivVoicePreviewPlay"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_chat_action_button"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@drawable/ic_play_arrow_24"
+            app:tint="@color/primary" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvVoiceRecorderState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/supplier_voice_ready"
+                android:textColor="@color/text_dark"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvVoiceRecorderTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/text_grey"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvVoiceRecorderCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            android:text="@string/supplier_voice_cancel"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvVoiceRecorderSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="8dp"
+            android:text="@string/supplier_voice_send"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_attach_money_24"
+            app:tint="@color/supplier_text_secondary" />
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_supplier_compose_bar"
+            android:hint="@string/supplier_type_message"
+            android:paddingHorizontal="14dp" />
+
+        <ImageView
+            android:id="@+id/layoutVoiceAction"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_chat_action_button"
+            android:padding="10dp"
+            android:src="@drawable/ic_mic_24"
+            app:tint="@color/primary" />
+
+        <ImageView
+            android:id="@+id/ivSend"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_supplier_fab"
+            android:padding="10dp"
+            android:src="@drawable/ic_send_24"
+            app:tint="@android:color/white" />
+    </LinearLayout>
+</LinearLayout>
+
