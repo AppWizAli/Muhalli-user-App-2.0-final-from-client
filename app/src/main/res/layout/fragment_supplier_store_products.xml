@@ -32,27 +32,6 @@
             android:hint="@string/supplier_search_products"
             android:paddingHorizontal="14dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBulkUpload"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/supplier_bulk_upload"
-            android:textAllCaps="false"
-            app:cornerRadius="14dp"
-            app:icon="@drawable/ic_upload_24" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBulkCatalogUpload"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/supplier_bulk_catalog_upload"
-            android:textAllCaps="false"
-            app:cornerRadius="14dp"
-            app:icon="@drawable/ic_upload_24" />
-
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

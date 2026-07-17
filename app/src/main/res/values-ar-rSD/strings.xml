@@ -126,7 +126,7 @@
     <string name="loading_title">لحظة من فضلك</string>
     <string name="loading_message">نجهز طلبك الآن.</string>
     <string name="loading_resending_code">نرسل رمزاً جديداً.</string>
-    <string name="phone_number_format_hint">249912345678 أو +249912345678</string>
+    <string name="phone_number_format_hint">مثال: 0912345678</string>
     <string name="loading_search_results">نبحث عن أفضل النتائج لك.</string>
     <string name="loading_supplier_catalog">جار تحميل منتجات هذا المورد.</string>
     <string name="loading_placing_order">جار إرسال طلبك الآن.</string>
@@ -149,7 +149,7 @@
     <string name="media_coming_soon">رسائل الوسائط قادمة قريباً</string>
     <string name="voice_notes_coming_soon">الرسائل الصوتية قادمة قريباً</string>
     <string name="buyer_phone_number">رقم الهاتف</string>
-    <string name="buyer_enter_phone_number">249912345678 أو +249912345678</string>
+    <string name="buyer_enter_phone_number">مثال: 0912345678</string>
     <string name="buyer_whatsapp_login_title">المتابعة برمز الهاتف</string>
     <string name="buyer_whatsapp_login_subtitle">سنرسل رمز تحقق إلى رقم هاتفك.</string>
     <string name="buyer_request_otp">إرسال الرمز</string>

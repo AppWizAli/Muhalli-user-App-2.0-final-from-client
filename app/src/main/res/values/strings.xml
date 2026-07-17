@@ -82,7 +82,7 @@
     <string name="loading_title">Just a moment</string>
     <string name="loading_message">We are preparing your request.</string>
     <string name="loading_resending_code">We are sending a fresh code.</string>
-    <string name="phone_number_format_hint">249912345678 or +249912345678</string>
+    <string name="phone_number_format_hint">e.g. 0912345678</string>
     <string name="loading_search_results">Finding the best matches for you.</string>
     <string name="loading_supplier_catalog">Loading products for this supplier.</string>
     <string name="loading_placing_order">Placing your order now.</string>
@@ -156,7 +156,7 @@
     <string name="voice_duration_format">%1$s voice note</string>
     <string name="multiple_suppliers">Multiple Suppliers</string>
     <string name="buyer_phone_number">Phone Number</string>
-    <string name="buyer_enter_phone_number">249912345678 or +249912345678</string>
+    <string name="buyer_enter_phone_number">e.g. 0912345678</string>
     <string name="buyer_whatsapp_login_title">Continue with phone OTP</string>
     <string name="buyer_whatsapp_login_subtitle">We will send a verification code to your phone number.</string>
     <string name="buyer_request_otp">Send OTP</string>

@@ -82,15 +82,9 @@
     <string name="supplier_active">Active</string>
     <string name="supplier_inactive">Inactive</string>
     <string name="supplier_low_stock">Low Stock</string>
-    <string name="supplier_add_to_offers">Add to Offers</string>
-    <string name="supplier_on_offer">On Offer</string>
-    <string name="supplier_offer_price_hint">Price inside the offer</string>
-    <string name="supplier_offer_max_quantity_hint">Maximum quantity inside the offer</string>
-    <string name="supplier_offer_saved">Offer saved</string>
+    <string name="supplier_change_price">Change Price</string>
     <string name="supplier_in_stock">In Stock</string>
     <string name="supplier_out_of_stock">Out of Stock</string>
-    <string name="supplier_stock_label">Stock: %1$d</string>
-    <string name="supplier_delivery_label">Delivery: %1$s</string>
     <string name="supplier_price_format">%1$s / %2$s</string>
     <string name="supplier_pkr_format">%1$s</string>
     <string name="supplier_amount_positive_format">+ %1$s</string>
@@ -161,6 +155,7 @@
     <string name="supplier_last_month">Last Month</string>
     <string name="supplier_transaction_history">Transaction History</string>
     <string name="supplier_no_transactions">No transactions yet for this period.</string>
+    <string name="supplier_no_notifications">No notifications yet.</string>
 
     <string name="supplier_profile_title">Profile</string>
     <string name="supplier_phone">Phone</string>
@@ -211,10 +206,6 @@
     <string name="supplier_offer_price_error">Offer price must be lower than the original price.</string>
     <string name="supplier_offer_quantity_error">Enter the max quantity for this offer.</string>
     <string name="supplier_offer_price_needed">Enter an offer price before adding a max offer quantity.</string>
-    <string name="supplier_bulk_upload">Bulk Upload</string>
-    <string name="supplier_bulk_catalog_upload">Bulk Catalog Upload</string>
-    <string name="supplier_bulk_upload_helper">Upload a CSV or Excel sheet with product name, category, prices, offer limit, and stock.</string>
-    <string name="supplier_bulk_upload_success">Bulk upload completed</string>
     <string name="supplier_bulk_file_read_failed">Could not read the selected bulk upload file.</string>
     <string name="supplier_bulk_upload_summary">Imported %1$d rows (%2$d created, %3$d updated, %4$d errors).</string>
     <string name="supplier_bulk_catalog_upload_summary">Imported %1$d catalog rows (%2$d created, %3$d updated, %4$d errors).</string>

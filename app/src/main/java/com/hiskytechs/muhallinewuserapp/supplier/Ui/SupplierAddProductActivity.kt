@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Base64
 import android.util.Log
 import android.view.View
@@ -31,6 +33,8 @@ class SupplierAddProductActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "SupplierAddProduct"
         private const val EXTRA_EDIT_PRODUCT_ID = "extra_edit_product_id"
+        private const val DEFAULT_STOCK_QUANTITY = "100"
+        private const val SEARCH_DEBOUNCE_MS = 300L
 
         fun openEdit(context: Context, productId: String) {
             context.startActivity(
@@ -50,9 +54,12 @@ class SupplierAddProductActivity : AppCompatActivity() {
     private var currentStep = 1
     private var selectedImageDataUrl: String? = null
     private var isCategoryLoading = false
-    private var isProductSearchLoading = false
     private var loadedSearchCategoryIds: Set<String> = emptySet()
     private var loadedCatalogProductSearchQuery = ""
+    private var searchRequestGeneration = 0
+    private val searchHandler = Handler(Looper.getMainLooper())
+    private var pendingCategorySearch: Runnable? = null
+    private var pendingCatalogSearch: Runnable? = null
 
     private val editProductId: String?
         get() = intent.getStringExtra(EXTRA_EDIT_PRODUCT_ID)
@@ -89,6 +96,8 @@ class SupplierAddProductActivity : AppCompatActivity() {
         if (isEditMode) {
             binding.tvAddProductTitle.text = getString(R.string.supplier_edit_product)
             binding.btnSaveProduct.text = getString(R.string.supplier_update)
+        } else {
+            binding.etStock.setText(DEFAULT_STOCK_QUANTITY)
         }
 
         setupCategoryStep()
@@ -160,7 +169,7 @@ class SupplierAddProductActivity : AppCompatActivity() {
         }
         binding.rvCatalogProductSearchResults.layoutManager = LinearLayoutManager(this)
         binding.rvCatalogProductSearchResults.adapter = productSearchAdapter
-        binding.etSearchCategories.addTextChangedListener { loadCombinedCategorySearch() }
+        binding.etSearchCategories.addTextChangedListener { scheduleCombinedCategorySearch() }
         binding.btnNextCategory.setOnClickListener {
             goToProductStep()
         }
@@ -175,7 +184,7 @@ class SupplierAddProductActivity : AppCompatActivity() {
         }
         binding.rvCatalogProducts.layoutManager = LinearLayoutManager(this)
         binding.rvCatalogProducts.adapter = catalogProductAdapter
-        binding.etSearchCatalog.addTextChangedListener { loadCatalogProducts(showReason = false) }
+        binding.etSearchCatalog.addTextChangedListener { scheduleCatalogProductsLoad() }
         binding.tvChangeCategory.setOnClickListener {
             currentStep = 1
             renderStep()
@@ -289,6 +298,12 @@ class SupplierAddProductActivity : AppCompatActivity() {
         binding.etOfferMaxQuantity.error = null
     }
 
+    private fun scheduleCatalogProductsLoad() {
+        pendingCatalogSearch?.let(searchHandler::removeCallbacks)
+        pendingCatalogSearch = Runnable { loadCatalogProducts(showReason = false) }
+            .also { searchHandler.postDelayed(it, SEARCH_DEBOUNCE_MS) }
+    }
+
     private fun loadCatalogProducts(showReason: Boolean): Boolean {
         val category = selectedCategory ?: return false
         val categoryId = category.id
@@ -329,6 +344,12 @@ class SupplierAddProductActivity : AppCompatActivity() {
         binding.rvCategories.scrollToPosition(0)
     }
 
+    private fun scheduleCombinedCategorySearch() {
+        pendingCategorySearch?.let(searchHandler::removeCallbacks)
+        pendingCategorySearch = Runnable { loadCombinedCategorySearch() }
+            .also { searchHandler.postDelayed(it, SEARCH_DEBOUNCE_MS) }
+    }
+
     private fun loadCombinedCategorySearch() {
         val query = binding.etSearchCategories.text?.toString().orEmpty()
         val isSearchingProducts = query.isNotBlank()
@@ -362,14 +383,17 @@ class SupplierAddProductActivity : AppCompatActivity() {
             productSearchAdapter.updateItems(emptyList())
             binding.rvCatalogProductSearchResults.visibility = View.GONE
             binding.layoutCatalogProductSearchLoading.visibility = View.VISIBLE
-            if (isProductSearchLoading) return
 
-            isProductSearchLoading = true
+            // A generation token (rather than a busy flag) means a fast typist
+            // can fire a newer search while an older, slower one is still in
+            // flight without either request getting silently dropped — we just
+            // ignore whichever response is no longer the latest.
+            val requestGeneration = ++searchRequestGeneration
             Log.d(TAG, "Category search='$query' loading catalogs for $matchingCategoryIds")
             SupplierData.refreshCatalogForCategories(
                 categoryIds = matchingCategoryIds,
                 onSuccess = {
-                    isProductSearchLoading = false
+                    if (requestGeneration != searchRequestGeneration) return@refreshCatalogForCategories
                     loadedSearchCategoryIds = matchingCategoryIds
                     loadedCatalogProductSearchQuery = ""
                     if (!isFinishing && !isDestroyed) {
@@ -377,7 +401,7 @@ class SupplierAddProductActivity : AppCompatActivity() {
                     }
                 },
                 onError = { message ->
-                    isProductSearchLoading = false
+                    if (requestGeneration != searchRequestGeneration) return@refreshCatalogForCategories
                     if (!isFinishing && !isDestroyed) {
                         binding.layoutCatalogProductSearchLoading.visibility = View.GONE
                         Log.w(TAG, "Category search catalog refresh failed: $message")
@@ -397,13 +421,12 @@ class SupplierAddProductActivity : AppCompatActivity() {
             productSearchAdapter.updateItems(emptyList())
             binding.rvCatalogProductSearchResults.visibility = View.GONE
             binding.layoutCatalogProductSearchLoading.visibility = View.VISIBLE
-            if (isProductSearchLoading) return
-            isProductSearchLoading = true
+            val requestGeneration = ++searchRequestGeneration
             Log.d(TAG, "Product search='$query' loading filtered catalog results")
             SupplierData.refreshCatalogForSearch(
                 query = query,
                 onSuccess = {
-                    isProductSearchLoading = false
+                    if (requestGeneration != searchRequestGeneration) return@refreshCatalogForSearch
                     if (!isFinishing && !isDestroyed) {
                         loadedCatalogProductSearchQuery = normalizedQuery
                         loadedSearchCategoryIds = emptySet()
@@ -411,7 +434,7 @@ class SupplierAddProductActivity : AppCompatActivity() {
                     }
                 },
                 onError = { message ->
-                    isProductSearchLoading = false
+                    if (requestGeneration != searchRequestGeneration) return@refreshCatalogForSearch
                     if (!isFinishing && !isDestroyed) {
                         binding.layoutCatalogProductSearchLoading.visibility = View.GONE
                         Log.w(TAG, "Filtered product search failed: $message")

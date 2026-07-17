@@ -12,6 +12,7 @@ import com.hiskytechs.muhallinewuserapp.Ui.AppLoadingDialog
 import com.hiskytechs.muhallinewuserapp.Ui.LocationSupport
 import com.hiskytechs.muhallinewuserapp.Ui.MapActivity
 import com.hiskytechs.muhallinewuserapp.Ui.OtpVerificationActivity
+import com.hiskytechs.muhallinewuserapp.Utill.KeyboardInsets
 import com.hiskytechs.muhallinewuserapp.databinding.ActivitySupplierRegisterBinding
 import com.hiskytechs.muhallinewuserapp.network.AuthRepository
 import com.hiskytechs.muhallinewuserapp.network.BackgroundWork
@@ -53,6 +54,7 @@ class SupplierRegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySupplierRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        KeyboardInsets.applyBottomPadding(binding.root)
         loadingDialog = AppLoadingDialog(this)
 
         binding.ivBack.setOnClickListener { finish() }

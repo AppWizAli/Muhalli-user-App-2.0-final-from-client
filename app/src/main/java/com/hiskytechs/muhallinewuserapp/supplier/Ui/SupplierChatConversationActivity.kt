@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hiskytechs.muhallinewuserapp.R
+import com.hiskytechs.muhallinewuserapp.Utill.KeyboardInsets
 import com.hiskytechs.muhallinewuserapp.Utill.VoiceNoteClip
 import com.hiskytechs.muhallinewuserapp.Utill.VoiceNoteRecorder
 import com.hiskytechs.muhallinewuserapp.databinding.ActivitySupplierChatConversationBinding
@@ -50,6 +51,7 @@ class SupplierChatConversationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySupplierChatConversationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        KeyboardInsets.applyBottomPadding(binding.root)
         voiceRecorder = VoiceNoteRecorder(this)
 
         conversationId = intent.getStringExtra(EXTRA_CONVERSATION_ID).orEmpty()

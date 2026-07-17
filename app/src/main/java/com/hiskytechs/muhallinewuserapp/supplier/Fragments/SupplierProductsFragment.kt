@@ -1,13 +1,9 @@
 package com.hiskytechs.muhallinewuserapp.supplier.Fragments
 
 import android.content.Intent
-import android.content.ContentResolver
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.provider.OpenableColumns
-import android.util.Base64
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +16,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -50,16 +45,6 @@ class SupplierProductsFragment : Fragment() {
     private val searchHandler = Handler(Looper.getMainLooper())
     private var pendingProductSearch: Runnable? = null
     private var skippedInitialResume = false
-    private val bulkUploadPicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        if (uri != null) {
-            uploadBulkFile(uri)
-        }
-    }
-    private val bulkCatalogUploadPicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        if (uri != null) {
-            uploadBulkCatalogFile(uri)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,7 +64,6 @@ class SupplierProductsFragment : Fragment() {
                 SupplierAddProductActivity.openEdit(requireContext(), it.id)
             },
             onPriceEdit = ::showPriceDialog,
-            onOffer = ::showOfferDialog,
             onToggle = { product, checked ->
                 loadingDialog?.show(R.string.loading_saving_product)
                 SupplierData.setProductAvailability(
@@ -147,27 +131,6 @@ class SupplierProductsFragment : Fragment() {
         binding.fabAddProduct.setOnClickListener {
             startActivity(Intent(requireContext(), SupplierAddProductActivity::class.java))
         }
-        binding.btnBulkUpload.setOnClickListener {
-            bulkUploadPicker.launch(
-                arrayOf(
-                    "text/*",
-                    "application/csv",
-                    "application/vnd.ms-excel",
-                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                )
-            )
-        }
-        binding.btnBulkCatalogUpload.setOnClickListener {
-            bulkCatalogUploadPicker.launch(
-                arrayOf(
-                    "text/*",
-                    "application/csv",
-                    "application/vnd.ms-excel",
-                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                )
-            )
-        }
-
         updateChipState(chips, binding.chipAll)
         binding.root.post { restoreProductsCacheInBackground() }
     }
@@ -280,148 +243,6 @@ class SupplierProductsFragment : Fragment() {
     companion object {
         private const val PRODUCT_PAGE_SIZE = 20
         private const val SEARCH_DEBOUNCE_MS = 300L
-    }
-
-    private fun uploadBulkFile(uri: Uri) {
-        val fileName = uri.displayName()
-        val resolver = requireContext().contentResolver
-        val readError = getString(R.string.supplier_bulk_file_read_failed)
-        binding.btnBulkUpload.isEnabled = false
-        loadingDialog?.show(R.string.loading_uploading_sheet)
-
-        BackgroundWork.run(
-            task = { encodeUploadFile(resolver, uri, readError) },
-            onSuccess = { encodedFile ->
-                SupplierData.bulkUploadProducts(
-                    fileName = fileName,
-                    fileDataBase64 = encodedFile,
-                    onSuccess = { summary ->
-                        if (_binding == null) return@bulkUploadProducts
-                        binding.btnBulkUpload.isEnabled = true
-                        loadingDialog?.dismiss()
-                        Toast.makeText(requireContext(), summary, Toast.LENGTH_LONG).show()
-                        refreshProducts()
-                    },
-                    onError = { message ->
-                        if (_binding == null) return@bulkUploadProducts
-                        binding.btnBulkUpload.isEnabled = true
-                        loadingDialog?.dismiss()
-                        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
-                    }
-                )
-            },
-            onError = { message ->
-                if (_binding == null) return@run
-                binding.btnBulkUpload.isEnabled = true
-                loadingDialog?.dismiss()
-                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-            }
-        )
-    }
-
-    private fun uploadBulkCatalogFile(uri: Uri) {
-        val fileName = uri.displayName()
-        val resolver = requireContext().contentResolver
-        val readError = getString(R.string.supplier_bulk_file_read_failed)
-        binding.btnBulkCatalogUpload.isEnabled = false
-        loadingDialog?.show(R.string.loading_uploading_sheet)
-
-        BackgroundWork.run(
-            task = { encodeUploadFile(resolver, uri, readError) },
-            onSuccess = { encodedFile ->
-                SupplierData.bulkUploadCatalogProducts(
-                    fileName = fileName,
-                    fileDataBase64 = encodedFile,
-                    onSuccess = { summary ->
-                        if (_binding == null) return@bulkUploadCatalogProducts
-                        binding.btnBulkCatalogUpload.isEnabled = true
-                        loadingDialog?.dismiss()
-                        Toast.makeText(requireContext(), summary, Toast.LENGTH_LONG).show()
-                        refreshProducts()
-                    },
-                    onError = { message ->
-                        if (_binding == null) return@bulkUploadCatalogProducts
-                        binding.btnBulkCatalogUpload.isEnabled = true
-                        loadingDialog?.dismiss()
-                        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
-                    }
-                )
-            },
-            onError = { message ->
-                if (_binding == null) return@run
-                binding.btnBulkCatalogUpload.isEnabled = true
-                loadingDialog?.dismiss()
-                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-            }
-        )
-    }
-
-    private fun encodeUploadFile(resolver: ContentResolver, uri: Uri, readError: String): String {
-        return resolver.openInputStream(uri)?.use { stream ->
-            Base64.encodeToString(stream.readBytes(), Base64.NO_WRAP)
-        }.orEmpty().ifBlank {
-            throw IllegalStateException(readError)
-        }
-    }
-
-    private fun Uri.displayName(): String {
-        val resolver = requireContext().contentResolver
-        return resolver.query(this, arrayOf(OpenableColumns.DISPLAY_NAME), null, null, null)
-            ?.use { cursor ->
-                if (cursor.moveToFirst()) {
-                    cursor.getString(0)
-                } else {
-                    null
-                }
-            }
-            ?.takeIf { it.isNotBlank() }
-            ?: lastPathSegment.orEmpty().ifBlank { "products.csv" }
-    }
-
-    private fun showOfferDialog(product: SupplierProduct) {
-        val priceInput = EditText(requireContext()).apply {
-            inputType = InputType.TYPE_CLASS_NUMBER
-            hint = getString(R.string.supplier_offer_price_hint)
-            setText(product.pricePkr.toString())
-        }
-        val quantityInput = EditText(requireContext()).apply {
-            inputType = InputType.TYPE_CLASS_NUMBER
-            hint = getString(R.string.supplier_offer_max_quantity_hint)
-        }
-        val container = LinearLayout(requireContext()).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(40, 12, 40, 0)
-            addView(priceInput)
-            addView(quantityInput)
-        }
-
-        AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.supplier_add_to_offers))
-            .setMessage(product.name)
-            .setView(container)
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.supplier_add_to_offers) { _, _ ->
-                val offerPrice = priceInput.text?.toString()?.toIntOrNull() ?: product.pricePkr
-                val maximumQuantity = quantityInput.text?.toString()?.toIntOrNull()
-                loadingDialog?.show(R.string.loading_saving_product)
-                SupplierData.addProductOffer(
-                    productId = product.id,
-                    offerPricePkr = offerPrice,
-                    maximumQuantity = maximumQuantity,
-                    onSuccess = {
-                        if (_binding == null) return@addProductOffer
-                        loadingDialog?.dismiss()
-                        Toast.makeText(requireContext(), R.string.supplier_offer_saved, Toast.LENGTH_SHORT).show()
-                        loadProducts()
-                    },
-                    onError = { message ->
-                        if (_binding == null) return@addProductOffer
-                        loadingDialog?.dismiss()
-                        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-                    }
-                )
-            }
-            .show()
     }
 
     private fun showPriceDialog(product: SupplierProduct) {

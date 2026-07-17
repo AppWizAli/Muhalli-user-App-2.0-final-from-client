@@ -23,6 +23,7 @@ import com.hiskytechs.muhallinewuserapp.supplier.Ui.SupplierAddProductActivity
 import com.hiskytechs.muhallinewuserapp.supplier.Ui.SupplierInventoryManagementActivity
 import com.hiskytechs.muhallinewuserapp.supplier.Ui.SupplierMainActivity
 import com.hiskytechs.muhallinewuserapp.supplier.Ui.SupplierMessagesActivity
+import com.hiskytechs.muhallinewuserapp.supplier.Ui.SupplierNotificationsActivity
 import com.hiskytechs.muhallinewuserapp.supplier.Ui.SupplierOrderStatusActivity
 import com.hiskytechs.muhallinewuserapp.supplier.Utill.formatPkr
 
@@ -127,8 +128,8 @@ class SupplierHomeFragment : Fragment() {
         binding.tvProductsValue.text = stats.totalProducts.toString()
         binding.tvLowStockMessage.text = SupplierData.getLowStockAlert()
         val unreadCount = SupplierData.getConversations().sumOf { it.unreadCount }
-        binding.tvNotificationBadge.text = unreadCount.toString()
-        binding.tvNotificationBadge.visibility = if (unreadCount > 0) View.VISIBLE else View.GONE
+        binding.tvMessagesBadge.text = unreadCount.toString()
+        binding.tvMessagesBadge.visibility = if (unreadCount > 0) View.VISIBLE else View.GONE
         recentOrderAdapter.updateItems(SupplierData.getRecentOrders())
         binding.rvRecentOrders.visibility = View.VISIBLE
     }
@@ -143,7 +144,7 @@ class SupplierHomeFragment : Fragment() {
             view.setBackgroundResource(R.drawable.bg_shimmer_placeholder)
             view.startAnimation(shimmerAnimation())
         }
-        binding.tvNotificationBadge.visibility = View.GONE
+        binding.tvMessagesBadge.visibility = View.GONE
         binding.rvRecentOrders.visibility = View.GONE
         binding.layoutRecentOrdersSkeleton.visibility = View.VISIBLE
         binding.layoutRecentOrdersSkeleton.startAnimation(shimmerAnimation())
@@ -211,8 +212,12 @@ class SupplierHomeFragment : Fragment() {
             (activity as? SupplierMainActivity)?.openTab(R.id.nav_supplier_orders)
         }
 
-        binding.layoutNotifications.setOnClickListener {
+        binding.layoutMessages.setOnClickListener {
             startActivity(Intent(requireContext(), SupplierMessagesActivity::class.java))
+        }
+
+        binding.layoutNotifications.setOnClickListener {
+            startActivity(Intent(requireContext(), SupplierNotificationsActivity::class.java))
         }
 
         binding.layoutSupport.setOnClickListener {

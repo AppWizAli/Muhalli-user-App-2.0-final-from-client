@@ -41,6 +41,15 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvPackaging"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/per_carton"
+            android:textColor="@color/text_grey"
+            android:textSize="11sp" />
+
+        <TextView
             android:id="@+id/tvOriginalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,19 +63,11 @@
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:text="@string/value_45_99"
             android:textColor="@color/primary"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvPackaging"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/per_carton"
-            android:textColor="@color/text_grey"
-            android:textSize="11sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddToCart"

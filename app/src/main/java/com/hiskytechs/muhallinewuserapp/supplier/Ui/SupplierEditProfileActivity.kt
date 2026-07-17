@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import com.hiskytechs.muhallinewuserapp.R
 import com.hiskytechs.muhallinewuserapp.Ui.LocationSupport
 import com.hiskytechs.muhallinewuserapp.Ui.MapActivity
+import com.hiskytechs.muhallinewuserapp.Utill.KeyboardInsets
 import com.hiskytechs.muhallinewuserapp.databinding.ActivitySupplierEditProfileBinding
 import com.hiskytechs.muhallinewuserapp.supplier.Data.SupplierData
 import com.hiskytechs.muhallinewuserapp.supplier.Utill.initials
@@ -51,6 +52,7 @@ class SupplierEditProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySupplierEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        KeyboardInsets.applyBottomPadding(binding.root)
 
         binding.ivBack.setOnClickListener { finish() }
         LocationSupport.bindSuggestions(this, binding.etCity)

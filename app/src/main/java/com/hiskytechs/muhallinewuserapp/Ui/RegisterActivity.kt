@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.hiskytechs.muhallinewuserapp.R
+import com.hiskytechs.muhallinewuserapp.Utill.KeyboardInsets
 import com.hiskytechs.muhallinewuserapp.databinding.ActivityRegisterBinding
 import com.hiskytechs.muhallinewuserapp.network.AuthRepository
 import com.hiskytechs.muhallinewuserapp.network.BackgroundWork
@@ -49,6 +50,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        KeyboardInsets.applyBottomPadding(binding.root)
         loadingDialog = AppLoadingDialog(this)
 
         binding.ivBack.setOnClickListener { finish() }

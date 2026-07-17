@@ -197,3 +197,12 @@ data class SupplierChatMessage(
     val type: ChatMessageType = ChatMessageType.TEXT,
     val voiceDuration: String = ""
 )
+
+data class SupplierNotificationItem(
+    val id: Int,
+    val title: String,
+    val message: String,
+    val createdAtLabel: String,
+    val linkType: String,
+    val linkValue: String
+)

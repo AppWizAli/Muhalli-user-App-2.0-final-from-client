@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.hiskytechs.muhallinewuserapp.Data.AppData
 import com.hiskytechs.muhallinewuserapp.R
+import com.hiskytechs.muhallinewuserapp.Utill.KeyboardInsets
 import com.hiskytechs.muhallinewuserapp.databinding.ActivityAccountDetailsBinding
 
 class AccountDetailsActivity : AppCompatActivity() {
@@ -46,6 +47,7 @@ class AccountDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAccountDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        KeyboardInsets.applyBottomPadding(binding.root)
 
         binding.toolbar.setNavigationOnClickListener { finish() }
         LocationSupport.bindSuggestions(this, binding.etCity)

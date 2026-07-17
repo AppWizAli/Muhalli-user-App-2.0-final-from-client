@@ -80,15 +80,9 @@
     <string name="supplier_active">نشط</string>
     <string name="supplier_inactive">غير نشط</string>
     <string name="supplier_low_stock">مخزون منخفض</string>
-    <string name="supplier_add_to_offers">أضف إلى العروض</string>
-    <string name="supplier_on_offer">ضمن عرض</string>
-    <string name="supplier_offer_price_hint">السعر داخل العرض</string>
-    <string name="supplier_offer_max_quantity_hint">الكمية القصوى داخل العرض</string>
-    <string name="supplier_offer_saved">تم حفظ العرض</string>
+    <string name="supplier_change_price">تغيير السعر</string>
     <string name="supplier_in_stock">متوفر</string>
     <string name="supplier_out_of_stock">غير متوفر</string>
-    <string name="supplier_stock_label">المخزون: %1$d</string>
-    <string name="supplier_delivery_label">التوصيل: %1$s</string>
     <string name="supplier_price_format">%1$s / %2$s</string>
     <string name="supplier_pkr_format">%1$s</string>
     <string name="supplier_amount_positive_format">+ %1$s</string>
@@ -148,6 +142,7 @@
     <string name="supplier_last_month">الشهر الماضي</string>
     <string name="supplier_transaction_history">سجل المعاملات</string>
     <string name="supplier_no_transactions">لا توجد معاملات لهذه الفترة حتى الآن.</string>
+    <string name="supplier_no_notifications">لا توجد إشعارات حتى الآن.</string>
 
     <string name="supplier_profile_title">الملف الشخصي</string>
     <string name="supplier_phone">الهاتف</string>
@@ -197,10 +192,6 @@
     <string name="supplier_offer_price_error">يجب أن يكون سعر العرض أقل من السعر الأصلي.</string>
     <string name="supplier_offer_quantity_error">أدخل الحد الأقصى للكمية داخل العرض.</string>
     <string name="supplier_offer_price_needed">أدخل سعر العرض قبل تحديد الحد الأقصى لكمية العرض.</string>
-    <string name="supplier_bulk_upload">رفع جماعي</string>
-    <string name="supplier_bulk_catalog_upload">رفع جماعي للكتالوج</string>
-    <string name="supplier_bulk_upload_helper">ارفع ملف CSV أو Excel يحتوي على اسم المنتج والتصنيف والأسعار وحد العرض والمخزون.</string>
-    <string name="supplier_bulk_upload_success">اكتمل الرفع الجماعي</string>
     <string name="supplier_bulk_file_read_failed">تعذرت قراءة ملف الرفع الجماعي المحدد.</string>
     <string name="supplier_bulk_upload_summary">تم استيراد %1$d صف (%2$d جديد، %3$d محدث، %4$d أخطاء).</string>
     <string name="supplier_bulk_catalog_upload_summary">تم استيراد %1$d صف كتالوج (%2$d جديد، %3$d محدث، %4$d أخطاء).</string>

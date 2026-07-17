@@ -5,7 +5,9 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.media.AudioAttributes
 import android.os.Build
+import android.provider.Settings
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.hiskytechs.muhallinewuserapp.MainActivity
@@ -14,7 +16,12 @@ import com.hiskytechs.muhallinewuserapp.supplier.Ui.SupplierMainActivity
 import com.hiskytechs.muhallinewuserapp.supplier.Ui.SupplierMessagesActivity
 
 object AppNotificationHelper {
-    private const val CHANNEL_ID = "muhalli_buyer_updates"
+    // Bumped to _v2 because Android locks a channel's sound the first time it's
+    // created; reusing the old id would leave the sound off for anyone who
+    // already has the app installed.
+    private const val CHANNEL_ID = "muhalli_buyer_updates_v2"
+    private const val LEGACY_CHANNEL_ID = "muhalli_buyer_updates"
+    private val NOTIFICATION_SOUND = Settings.System.DEFAULT_NOTIFICATION_URI
 
     fun showBuyerNotification(
         context: Context,
@@ -38,6 +45,8 @@ object AppNotificationHelper {
             .setContentText(message)
             .setStyle(NotificationCompat.BigTextStyle().bigText(message))
             .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setDefaults(NotificationCompat.DEFAULT_VIBRATE)
+            .setSound(NOTIFICATION_SOUND)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
             .build()
@@ -66,12 +75,26 @@ object AppNotificationHelper {
     fun ensureChannel(context: Context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // The old channel was created without a sound, and Android never lets an
+        // app change a channel's sound after the fact — so drop it and let the
+        // new _v2 channel below take over with sound enabled from the start.
+        manager.deleteNotificationChannel(LEGACY_CHANNEL_ID)
+
         val channel = NotificationChannel(
             CHANNEL_ID,
             context.getString(R.string.notifications),
             NotificationManager.IMPORTANCE_HIGH
         ).apply {
             description = context.getString(R.string.notifications_channel_description)
+            enableVibration(true)
+            setSound(
+                NOTIFICATION_SOUND,
+                AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build()
+            )
         }
         manager.createNotificationChannel(channel)
     }

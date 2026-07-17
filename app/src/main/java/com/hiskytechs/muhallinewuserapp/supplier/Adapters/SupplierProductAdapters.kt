@@ -27,7 +27,6 @@ class SupplierStoreProductAdapter(
     private var items: List<SupplierProduct>,
     private val onEdit: (SupplierProduct) -> Unit,
     private val onPriceEdit: (SupplierProduct) -> Unit,
-    private val onOffer: (SupplierProduct) -> Unit,
     private val onToggle: (SupplierProduct, Boolean) -> Unit
 ) : RecyclerView.Adapter<SupplierStoreProductAdapter.SupplierStoreProductViewHolder>() {
 
@@ -80,21 +79,13 @@ class SupplierStoreProductAdapter(
             binding.tvStockState.setTextColor(
                 ContextCompat.getColor(context, stockTextColor(item.stockState))
             )
-            binding.tvStockCount.text = context.getString(R.string.supplier_stock_label, item.stock)
-            binding.tvDeliveryDays.text = context.getString(R.string.supplier_delivery_label, item.deliveryDays)
             binding.switchAvailability.setOnCheckedChangeListener(null)
             binding.switchAvailability.isChecked = item.isActive
             binding.switchAvailability.setOnCheckedChangeListener { _, checked ->
                 onToggle(item, checked)
             }
             binding.ivEdit.setOnClickListener { onEdit(item) }
-            binding.ivPriceEdit.setOnClickListener { onPriceEdit(item) }
-            binding.btnAddOffer.text = if (item.isOnOffer) {
-                context.getString(R.string.supplier_on_offer)
-            } else {
-                context.getString(R.string.supplier_add_to_offers)
-            }
-            binding.btnAddOffer.setOnClickListener { onOffer(item) }
+            binding.btnChangePrice.setOnClickListener { onPriceEdit(item) }
         }
     }
 

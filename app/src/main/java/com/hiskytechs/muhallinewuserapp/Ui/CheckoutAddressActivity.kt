@@ -10,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import com.hiskytechs.muhallinewuserapp.Models.Address
 import com.hiskytechs.muhallinewuserapp.R
 import com.hiskytechs.muhallinewuserapp.Utill.AddressManager
+import com.hiskytechs.muhallinewuserapp.Utill.KeyboardInsets
 import com.hiskytechs.muhallinewuserapp.databinding.ActivityCheckoutAddressBinding
 
 class CheckoutAddressActivity : AppCompatActivity() {
@@ -36,6 +37,7 @@ class CheckoutAddressActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckoutAddressBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        KeyboardInsets.applyBottomPadding(binding.root)
         continueToReview = intent.getBooleanExtra(EXTRA_CONTINUE_TO_REVIEW, true)
 
         binding.ivBack.setOnClickListener { finish() }

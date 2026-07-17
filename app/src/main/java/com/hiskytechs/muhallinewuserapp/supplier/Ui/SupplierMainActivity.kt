@@ -53,7 +53,7 @@ class SupplierMainActivity : AppCompatActivity() {
         }
 
         if (savedInstanceState == null) {
-            val destination = intent.getIntExtra(EXTRA_TAB_ID, R.id.nav_supplier_home)
+            val destination = intent.getIntExtra(EXTRA_TAB_ID, R.id.nav_supplier_products)
             openTab(destination)
         }
         maybeRequestNotificationPermission()
@@ -61,7 +61,7 @@ class SupplierMainActivity : AppCompatActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        val destination = intent.getIntExtra(EXTRA_TAB_ID, R.id.nav_supplier_home)
+        val destination = intent.getIntExtra(EXTRA_TAB_ID, R.id.nav_supplier_products)
         openTab(destination)
     }
 

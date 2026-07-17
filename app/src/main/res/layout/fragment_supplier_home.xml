@@ -90,20 +90,22 @@
                     </FrameLayout>
 
                     <FrameLayout
-                        android:id="@+id/layoutNotifications"
+                        android:id="@+id/layoutMessages"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="@string/supplier_messages_title"
                         android:foreground="?attr/selectableItemBackgroundBorderless">
 
                         <ImageView
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_notifications_24"
+                            android:src="@drawable/ic_chat_bubble_24"
                             app:tint="@android:color/white" />
 
                         <TextView
-                            android:id="@+id/tvNotificationBadge"
+                            android:id="@+id/tvMessagesBadge"
                             android:layout_width="18dp"
                             android:layout_height="18dp"
                             android:layout_gravity="end|top"
@@ -113,6 +115,21 @@
                             android:textColor="@android:color/white"
                             android:textSize="10sp"
                             android:textStyle="bold" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/layoutNotifications"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="@string/notifications"
+                        android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_notifications_24"
+                            app:tint="@android:color/white" />
                     </FrameLayout>
                 </LinearLayout>
             </RelativeLayout>

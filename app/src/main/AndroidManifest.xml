@@ -52,7 +52,8 @@
 
         <activity
             android:name=".supplier.Ui.SupplierRegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".supplier.Ui.SupplierMainActivity"
@@ -67,8 +68,13 @@
             android:exported="false" />
 
         <activity
-            android:name=".supplier.Ui.SupplierChatConversationActivity"
+            android:name=".supplier.Ui.SupplierNotificationsActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".supplier.Ui.SupplierChatConversationActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".supplier.Ui.SupplierInventoryManagementActivity"
@@ -76,7 +82,8 @@
 
         <activity
             android:name=".supplier.Ui.SupplierEditProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".supplier.Ui.SupplierOrderStatusActivity"
@@ -102,7 +109,8 @@
 
         <activity
             android:name=".Ui.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".Ui.SupplierDetailsActivity"
@@ -110,7 +118,8 @@
 
         <activity
             android:name=".Ui.MapActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".Ui.NotificationsActivity"
@@ -126,7 +135,8 @@
 
         <activity
             android:name=".Ui.ChatConversationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".Ui.ChatsActivity"
@@ -134,7 +144,8 @@
 
         <activity
             android:name=".Ui.AccountDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".Ui.AboutAppActivity"
@@ -154,7 +165,8 @@
 
         <activity
             android:name=".Ui.CheckoutAddressActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".Ui.SuppliersActivity"

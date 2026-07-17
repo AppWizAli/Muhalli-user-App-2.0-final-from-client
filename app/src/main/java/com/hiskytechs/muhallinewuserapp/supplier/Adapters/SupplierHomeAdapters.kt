@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.hiskytechs.muhallinewuserapp.databinding.ItemSupplierNotificationBinding
 import com.hiskytechs.muhallinewuserapp.databinding.ItemSupplierQuickActionBinding
 import com.hiskytechs.muhallinewuserapp.databinding.ItemSupplierRecentOrderBinding
+import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierNotificationItem
 import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierOrder
 import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierQuickAction
 import com.hiskytechs.muhallinewuserapp.supplier.Utill.formatPkr
@@ -99,5 +101,41 @@ class SupplierRecentOrderAdapter(
                 return previous[oldItemPosition] == newItems[newItemPosition]
             }
         }).dispatchUpdatesTo(this)
+    }
+}
+
+class SupplierNotificationAdapter(
+    private var items: List<SupplierNotificationItem>
+) : RecyclerView.Adapter<SupplierNotificationAdapter.SupplierNotificationViewHolder>() {
+
+    inner class SupplierNotificationViewHolder(
+        private val binding: ItemSupplierNotificationBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: SupplierNotificationItem) {
+            binding.tvNotificationTitle.text = item.title
+            binding.tvNotificationMessage.text = item.message
+            binding.tvNotificationTime.text = item.createdAtLabel
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SupplierNotificationViewHolder {
+        val binding = ItemSupplierNotificationBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return SupplierNotificationViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: SupplierNotificationViewHolder, position: Int) {
+        holder.bind(items[position])
+    }
+
+    override fun getItemCount(): Int = items.size
+
+    fun updateItems(newItems: List<SupplierNotificationItem>) {
+        items = newItems
+        notifyDataSetChanged()
     }
 }

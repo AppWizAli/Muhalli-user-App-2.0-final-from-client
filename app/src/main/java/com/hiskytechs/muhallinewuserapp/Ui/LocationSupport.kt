@@ -22,6 +22,11 @@ object LocationSupport {
             )
         )
         view.threshold = 0
+        // A fixed height (rather than "wrap_content"/auto) keeps the dropdown
+        // from trying to measure against the full screen height, which on
+        // edge-to-edge API levels doesn't shrink for the keyboard and left the
+        // list rendered behind it.
+        view.dropDownHeight = (168 * context.resources.displayMetrics.density).toInt()
         view.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 view.showDropDown()

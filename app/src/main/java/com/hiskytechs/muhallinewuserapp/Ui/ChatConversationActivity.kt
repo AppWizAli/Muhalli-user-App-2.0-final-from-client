@@ -15,6 +15,7 @@ import com.hiskytechs.muhallinewuserapp.Data.AppData
 import com.hiskytechs.muhallinewuserapp.Models.ChatMessage
 import com.hiskytechs.muhallinewuserapp.R
 import com.hiskytechs.muhallinewuserapp.databinding.ActivityChatConversationBinding
+import com.hiskytechs.muhallinewuserapp.Utill.KeyboardInsets
 import com.hiskytechs.muhallinewuserapp.Utill.VoiceNoteClip
 import com.hiskytechs.muhallinewuserapp.Utill.VoiceNoteRecorder
 
@@ -54,6 +55,7 @@ class ChatConversationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatConversationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        KeyboardInsets.applyBottomPadding(binding.root)
         voiceRecorder = VoiceNoteRecorder(this)
 
         threadId = intent.getIntExtra(EXTRA_THREAD_ID, 0)

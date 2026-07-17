@@ -20,6 +20,7 @@ import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierDashboardStats
 import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierEarningsPeriod
 import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierHomeAction
 import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierIntroPage
+import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierNotificationItem
 import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierOrder
 import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierOrderItem
 import com.hiskytechs.muhallinewuserapp.supplier.Models.SupplierOrderStatus
@@ -42,6 +43,7 @@ object SupplierData {
 
     private const val TAG = "SupplierData"
     const val INVENTORY_PAGE_SIZE = 50
+    private const val SEARCH_MAX_PAGES = 5
 
     private const val CACHE_PREFS = "supplier_data_cache"
     private const val CACHE_CATALOG = "catalog"
@@ -51,6 +53,7 @@ object SupplierData {
     private const val CACHE_ORDERS = "orders"
     private const val CACHE_EARNINGS = "earnings"
     private const val CACHE_CONVERSATIONS = "conversations"
+    private const val CACHE_NOTIFICATIONS = "supplier_notifications"
 
     private val introPages = listOf(
         SupplierIntroPage(
@@ -345,6 +348,53 @@ object SupplierData {
             onSuccess = onSuccess,
             onError = onError
         )
+    }
+
+    fun loadNotifications(
+        onSuccess: (List<SupplierNotificationItem>) -> Unit,
+        onError: (String) -> Unit
+    ) {
+        BackgroundWork.run(
+            task = {
+                runCatching {
+                    ApiClient.getDataArray(
+                        endpoint = "supplier/notifications",
+                        queryParams = mapOf(
+                            "supplier_id" to AppSession.supplierId,
+                            "page" to 1,
+                            "limit" to 30
+                        )
+                    ).also { cacheString(CACHE_NOTIFICATIONS, it.toString()) }
+                }.getOrElse { error ->
+                    cachedNotificationsArray() ?: throw error
+                }.let(::parseNotifications)
+            },
+            onSuccess = onSuccess,
+            onError = onError
+        )
+    }
+
+    private fun cachedNotificationsArray(): JSONArray? {
+        val raw = cachedString(CACHE_NOTIFICATIONS)
+        return if (raw.isNullOrBlank()) null else runCatching { JSONArray(raw) }.getOrNull()
+    }
+
+    private fun parseNotifications(array: JSONArray): List<SupplierNotificationItem> {
+        return buildList {
+            repeat(array.length()) { index ->
+                val item = array.optJSONObject(index) ?: return@repeat
+                add(
+                    SupplierNotificationItem(
+                        id = item.optInt("id"),
+                        title = item.optString("title"),
+                        message = item.optString("message"),
+                        createdAtLabel = ApiFormatting.displayDateTime(item.optString("created_at")),
+                        linkType = item.optString("link_type"),
+                        linkValue = item.optString("link_value")
+                    )
+                )
+            }
+        }
     }
 
     fun refreshEarnings(onSuccess: () -> Unit, onError: (String) -> Unit) {
@@ -1094,7 +1144,11 @@ object SupplierData {
         if (normalizedQuery.isBlank()) {
             throw ApiException("A search query is required.")
         }
-        val catalogArray = fetchAllCatalogPages(searchQuery = normalizedQuery)
+        // The backend now filters by the search term itself (FULLTEXT index),
+        // so a real search rarely needs more than a page. This cap just
+        // guards against a very broad term still fanning out into hundreds of
+        // sequential requests against a catalog with lacs/millions of rows.
+        val catalogArray = fetchAllCatalogPages(searchQuery = normalizedQuery, maxPages = SEARCH_MAX_PAGES)
         val rawCatalog = catalogArray.toString()
         synchronized(catalogCacheLock) {
             catalogProductsCache = parseCatalogProducts(catalogArray)
@@ -1105,13 +1159,14 @@ object SupplierData {
 
     private fun fetchAllCatalogPages(
         categoryId: String? = null,
-        searchQuery: String? = null
+        searchQuery: String? = null,
+        maxPages: Int = Int.MAX_VALUE
     ): JSONArray {
         val merged = JSONArray()
         val seenIds = linkedSetOf<String>()
         var page = 1
         val limit = 100
-        while (true) {
+        while (page <= maxPages) {
             val queryParams = mutableMapOf<String, Any?>(
                 "page" to page,
                 "limit" to limit
